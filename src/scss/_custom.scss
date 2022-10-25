@@ -1,0 +1,45 @@
+// Here you can add other styles
+
+$sidebarBg: #000000;
+$bgMain: #171717;
+$white: #ffffff;
+$textSelected: #ec6ead;
+
+.bgSider {
+  background-color: $sidebarBg !important;
+}
+
+body,
+html,
+.header,
+.wrapper {
+  background: $bgMain !important;
+  color: $white !important;
+}
+
+.header-nav .show > .nav-link,
+.header-nav .nav-link.active {
+  color: $textSelected !important;
+}
+
+.header-nav .nav-link {
+  color: $white !important;
+}
+
+.header-nav .nav-link:hover {
+  color: $textSelected !important;
+}
+
+.header-toggler,
+.icon {
+  color: $white !important;
+}
+
+.icon:hover {
+  color: $textSelected !important;
+}
+
+.header-nav .nav-link:hover,
+.header-nav .nav-link:focus {
+  color: $white;
+}
