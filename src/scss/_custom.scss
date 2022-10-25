@@ -4,14 +4,48 @@ $sidebarBg: #000000;
 $bgMain: #171717;
 $white: #ffffff;
 $textSelected: #ec6ead;
+$sidebarHover: #472134;
 
 .sidebar,
 .sidebar-fixed {
   background: $bgMain !important;
 }
 
+.headerFilterIcon {
+  background: $textSelected;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.simplebar-content > .nav-item,
+.simplebar-content > .nav-item > a {
+  background: $sidebarBg !important;
+  transition: 0.5s;
+  &:hover {
+    background: $sidebarHover !important;
+    color: $textSelected !important;
+  }
+}
+
+.sidebar-nav .nav-link.active .nav-icon {
+  color: inherit !important;
+  transition: 0.1s;
+}
+
+// .simplebar-content > .nav-item:hover {
+
+// }
+
+.simplebar-content > .nav-item:last-of-type {
+  margin-top: 20%;
+}
+
 .bgSider {
   background-color: $sidebarBg !important;
+}
+
+.header.header-sticky {
+  border-bottom: 0 !important;
 }
 
 body,
