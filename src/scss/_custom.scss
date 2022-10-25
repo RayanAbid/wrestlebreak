@@ -5,6 +5,11 @@ $bgMain: #171717;
 $white: #ffffff;
 $textSelected: #ec6ead;
 
+.sidebar,
+.sidebar-fixed {
+  background: $bgMain !important;
+}
+
 .bgSider {
   background-color: $sidebarBg !important;
 }
