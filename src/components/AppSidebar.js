@@ -14,7 +14,6 @@ import CIcon from "@coreui/icons-react";
 import { AppSidebarNav } from "./AppSidebarNav";
 
 import logo from "src/assets/brand/logo.png";
-import { sygnet } from "src/assets/brand/sygnet";
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";

@@ -27,9 +27,17 @@ $sidebarHover: #472134;
   }
 }
 
+.sidebar-nav .nav-link.active {
+  background: $sidebarHover !important;
+  color: $textSelected !important;
+}
+
 .sidebar-nav .nav-link.active .nav-icon {
   color: inherit !important;
   transition: 0.1s;
+  &:hover {
+    color: inherit !important;
+  }
 }
 
 // .simplebar-content > .nav-item:hover {
