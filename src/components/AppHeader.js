@@ -1,15 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   CContainer,
   CHeader,
-  CHeaderBrand,
-  CHeaderDivider,
   CHeaderNav,
-  CHeaderToggler,
-  CNavLink,
-  CNavItem,
   CImage,
   CInputGroup,
   CFormInput,
@@ -17,12 +11,10 @@ import {
   CCol,
   CInputGroupText,
 } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
-import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from "@coreui/icons";
 
-import { AppBreadcrumb } from "./index";
 import { AppHeaderDropdown } from "./header/index";
-import logo from "src/assets/brand/logo.png";
+
+import { FilterIcon } from "src/assets/icons";
 
 const AppHeader = () => {
   const dispatch = useDispatch();
@@ -49,7 +41,12 @@ const AppHeader = () => {
               </CInputGroup>
             </CCol>
             <CCol xs={2}>
-              <i class="fa fa-filter headerFilterIcon" aria-hidden="true"></i>
+              <CImage
+                src={require("../../src/assets/icons/Filter.png")}
+                className="d-inline-block headerFilterIcon"
+                alt="filterIcon"
+              />
+              {/* <i class="fa fa-filter headerFilterIcon" aria-hidden="true"></i> */}
             </CCol>
           </CRow>
         </CHeaderNav>

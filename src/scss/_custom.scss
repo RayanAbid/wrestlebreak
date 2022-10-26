@@ -13,8 +13,9 @@ $sidebarHover: #472134;
 
 .headerFilterIcon {
   background: $textSelected;
-  padding: 10px;
+  padding: 12px;
   border-radius: 10px;
+  width: 43px;
 }
 
 .simplebar-content > .nav-item,
@@ -47,7 +48,7 @@ $sidebarHover: #472134;
 
 .simplebar-content > .nav-item:last-of-type {
   margin-top: 20%;
-  margin-bottom: 15%;
+  margin-bottom: 10%;
 }
 
 .bgSider {
