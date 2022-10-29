@@ -5,6 +5,8 @@ $bgMain: #171717;
 $white: #ffffff;
 $textSelected: #ec6ead;
 $sidebarHover: #472134;
+$tagSrc: rgba(80, 62, 157, 0.1);
+$textGray: #878787;
 
 .sidebar,
 .sidebar-fixed {
@@ -92,4 +94,34 @@ html,
 .header-nav .nav-link:hover,
 .header-nav .nav-link:focus {
   color: $white;
+}
+
+.card {
+  background: $bgMain !important;
+}
+
+.srcTag {
+  background: $tagSrc;
+  color: $textSelected;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.cardTextGray {
+  color: $textGray;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.headlineCardImg {
+  border-radius: 25px !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.textSeeAll {
+  color: $textSelected !important;
 }
