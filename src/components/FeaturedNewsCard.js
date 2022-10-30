@@ -7,18 +7,38 @@ import {
   CCol,
   CRow,
 } from "@coreui/react";
+import moment from "moment";
+
 import React from "react";
 
-function FeaturedNewsCard() {
+function FeaturedNewsCard({ item, index }) {
+  const { image, source, postLink, createdAt, title, description } = item;
+
+  const navigateToPost = (e) => {
+    e.preventDefault();
+    window.open(postLink, "_blank");
+  };
+
   return (
-    <CCard className="mb-3">
+    <CCard index={index} className="mb-3">
       <CCardImage
-        className="headlineCardImg"
+        onClick={(e) => {
+          navigateToPost(e);
+        }}
+        className="headlineCardImgFeatured cursorPointer"
         orientation="top"
-        src="https://www.insidesport.in/wp-content/uploads/2022/02/drew_mcintyre_png_render_wwe_2021_by_v_mozz_defxm2v-fullview-2.png"
+        src={image}
       />
       <CCardBody>
-        <CCardTitle>WWE Raw Results: More Bray Wyatt Clues</CCardTitle>
+        <CCardTitle
+          onClick={(e) => {
+            navigateToPost(e);
+          }}
+          className="cursorPointer"
+        >
+          {title?.substring(0, 60)}
+          {title?.length > 60 && "..."}
+        </CCardTitle>
         <div className="d-flex justify-content-start">
           <p className="cardTextGray cursorPointer ">
             <i className="fa-regular fa-thumbs-up"></i> <span>10.8k</span>
@@ -39,7 +59,8 @@ function FeaturedNewsCard() {
           </p>
           <p>
             <span className="cardTextGray">
-              <i className="fa-solid fa-clock"></i> 2:00 pm
+              <i className="fa-solid fa-clock"></i>{" "}
+              {moment(createdAt)?.format("hh:mm A")}
             </span>
           </p>
         </div>

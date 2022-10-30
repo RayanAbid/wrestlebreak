@@ -7,20 +7,41 @@ import {
   CCol,
   CRow,
 } from "@coreui/react";
+import moment from "moment";
 
-function TodayHeadlineCard() {
+function TodayHeadlineCard({ item, index }) {
+  const { image, source, postLink, createdAt, title, description } = item;
+
+  const navigateToPost = (e) => {
+    e.preventDefault();
+    window.open(postLink, "_blank");
+  };
+
   return (
-    <CCard className="mb-3" style={{ maxWidth: "440px" }}>
+    <CCard index={index} className="mb-3" style={{ maxWidth: "440px" }}>
       <CRow className="g-0">
         <CCol md={4}>
           <CCardImage
-            className="headlineCardImg"
-            src="https://www.insidesport.in/wp-content/uploads/2022/02/drew_mcintyre_png_render_wwe_2021_by_v_mozz_defxm2v-fullview-2.png"
+            onClick={(e) => {
+              navigateToPost(e);
+            }}
+            className="headlineCardImg cursorPointer"
+            src={image}
           />
         </CCol>
         <CCol md={8}>
           <CCardBody>
-            <CCardTitle>New Raw set revealed</CCardTitle>
+            <CCardTitle
+              onClick={(e) => {
+                navigateToPost(e);
+              }}
+              style={{
+                fontSize: "15px",
+              }}
+            >
+              {title?.substring(0, 60)}
+              {title?.length > 60 && "..."}
+            </CCardTitle>
             {/* <CCardText> */}
             <CRow>
               <CCol md="6" xs="6" sm="6" lg="6">
@@ -44,7 +65,8 @@ function TodayHeadlineCard() {
               <CCol md="6" xs="6" sm="6" lg="6">
                 <p>
                   <span className="cardTextGray">
-                    <i className="fa-solid fa-clock"></i> 2:00 pm
+                    <i className="fa-solid fa-clock"></i>{" "}
+                    {moment(createdAt)?.format("hh:mm A")}
                   </span>
                 </p>
               </CCol>
