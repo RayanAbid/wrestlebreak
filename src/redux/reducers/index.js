@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 const initialState = {
-  sidebarShow: true,
+  sidebarShow: false,
   newsArr: [],
 };
 

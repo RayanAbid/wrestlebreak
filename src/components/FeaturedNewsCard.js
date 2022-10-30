@@ -55,13 +55,7 @@ function FeaturedNewsCard({ item, index }) {
         </div>
         <div className="d-flex justify-content-between">
           <p className="">
-            <span className="srcTag">Raw</span>
-          </p>
-          <p>
-            <span className="cardTextGray">
-              <i className="fa-solid fa-clock"></i>{" "}
-              {moment(createdAt)?.format("hh:mm A")}
-            </span>
+            <span className="srcTag">{source}</span>
           </p>
         </div>
       </CCardBody>

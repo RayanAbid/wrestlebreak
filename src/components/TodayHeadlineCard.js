@@ -57,19 +57,9 @@ function TodayHeadlineCard({ item, index }) {
               </CCol>
             </CRow>
             <CRow>
-              <CCol md="6" xs="6" sm="6" lg="6">
-                <p className="">
-                  <span className="srcTag">Raw</span>
-                </p>
-              </CCol>
-              <CCol md="6" xs="6" sm="6" lg="6">
-                <p>
-                  <span className="cardTextGray">
-                    <i className="fa-solid fa-clock"></i>{" "}
-                    {moment(createdAt)?.format("hh:mm A")}
-                  </span>
-                </p>
-              </CCol>
+              <p className="">
+                <span className="srcTag">{source}</span>
+              </p>
             </CRow>
           </CCardBody>
         </CCol>
