@@ -89,7 +89,7 @@ const Home = () => {
         </span>
       </div>
       <CRow>
-        {newsArr?.slice(0, 8)?.map((item, index) => (
+        {newsArr?.slice(0, 6)?.map((item, index) => (
           <>
             {item.source != "impactwrestling.com" && (
               <CCol md="4" sm="12" lg="4">

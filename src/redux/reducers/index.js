@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 const initialState = {
-  sidebarShow: false,
+  sidebarShow: true,
   newsArr: [],
 };
 
@@ -17,5 +17,4 @@ const changeState = (state = initialState, { type, ...rest }) => {
   }
 };
 
-const store = createStore(changeState, applyMiddleware(thunk, logger));
-export default store;
+export default changeState;
