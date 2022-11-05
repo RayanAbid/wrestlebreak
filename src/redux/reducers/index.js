@@ -5,6 +5,8 @@ import logger from "redux-logger";
 const initialState = {
   sidebarShow: true,
   newsArr: [],
+  user: [],
+  accessToken: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {

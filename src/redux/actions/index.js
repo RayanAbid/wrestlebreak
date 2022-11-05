@@ -1,1 +1,2 @@
-export * from "./action";
+export * from "./NewsActions";
+export * from "./UserActions";
