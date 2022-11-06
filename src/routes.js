@@ -16,7 +16,13 @@ const routes = [
   { path: "/saved", name: "Saved", element: Home },
   { path: "/subscriptions", name: "Subscriptions", element: Home },
   { path: "/settings", name: "Settings", element: Home },
-  { path: "/logout", name: "Logout", element: Logout },
+  {
+    path: "/logout",
+    name: "Logout",
+    onClick: () => {
+      console.log("test");
+    },
+  },
 ];
 
 export default routes;

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { CNavItem } from "@coreui/react";
+import { logout } from "./redux/actions";
 
 const _nav = [
   {
@@ -39,7 +40,7 @@ const _nav = [
   {
     component: CNavItem,
     name: "Logout",
-    to: "/logout",
+    to: "/login",
     icon: <i className="fa fa-sign-out nav-icon" aria-hidden="true"></i>,
   },
 ];

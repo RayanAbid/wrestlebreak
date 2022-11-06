@@ -85,7 +85,7 @@ const Home = () => {
         <h2>Today’s Headlines</h2>
 
         <span className="textSeeAll">
-          See all <i class="fa-solid fa-chevron-right"></i>
+          See all <i className="fa-solid fa-chevron-right"></i>
         </span>
       </div>
       <CRow>
@@ -104,7 +104,7 @@ const Home = () => {
         <h2>Featured News</h2>
 
         <span className="textSeeAll">
-          See all <i class="fa-solid fa-chevron-right"></i>
+          See all <i className="fa-solid fa-chevron-right"></i>
         </span>
       </div>
       <CRow>

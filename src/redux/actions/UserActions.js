@@ -34,3 +34,12 @@ export const login = (vals, navigate) => async (dispatch, state) => {
       console.log(error);
     });
 };
+
+export const logout = (navigate) => async (dispatch, state) => {
+  dispatch({
+    type: "set",
+    accessToken: "",
+    user: {},
+  });
+  navigate("/login");
+};
