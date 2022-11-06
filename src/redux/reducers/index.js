@@ -6,7 +6,7 @@ const initialState = {
   sidebarShow: true,
   newsArr: [],
   user: [],
-  accessToken: [],
+  accessToken: "",
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {

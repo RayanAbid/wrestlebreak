@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   AppContent,
   AppSidebar,
@@ -7,6 +10,18 @@ import {
 } from "../components/index";
 
 const DefaultLayout = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  useEffect(() => {
+    if (state?.accessToken) {
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <div>
       <AppSidebar />
