@@ -8,7 +8,7 @@ import logger from "redux-logger";
 const persistConfig = {
   key: "root",
   storage: storage,
-  blacklist: ["sidebarShow"],
+  blacklist: ["sidebarShow", "newsArr"],
 };
 
 const pReducer = persistReducer(persistConfig, reducers);

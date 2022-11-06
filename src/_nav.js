@@ -16,12 +16,12 @@ const _nav = [
   //   to: "/invite",
   //   icon: <i className="fa fa-user-plus nav-icon" aria-hidden="true"></i>,
   // },
-  // {
-  //   component: CNavItem,
-  //   name: "Explore",
-  //   to: "/explore",
-  //   icon: <i className="fa fa-search nav-icon" aria-hidden="true"></i>,
-  // },
+  {
+    component: CNavItem,
+    name: "Explore",
+    to: "/explore",
+    icon: <i className="fa fa-search nav-icon" aria-hidden="true"></i>,
+  },
 
   // {
   //   component: CNavItem,

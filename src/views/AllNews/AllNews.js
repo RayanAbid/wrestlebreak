@@ -59,18 +59,9 @@ import { firstAction, getAllNews } from "src/redux/actions/NewsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const AllNews = () => {
   const newsArr = useSelector((state) => state.newsArr);
   const dispatch = useDispatch();
-
-  const val = [
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-  ];
 
   const callGetAllNews = async () => {
     await dispatch(getAllNews());
@@ -83,33 +74,14 @@ const Home = () => {
   return (
     <>
       <div className="d-flex justify-content-between my-2">
-        <h2>Today’s Headlines</h2>
+        <h2>All News</h2>
 
-        <Link to={"/all_news"} className="textSeeAll cursorPointer">
-          See all <i className="fa-solid fa-chevron-right"></i>
+        <Link to={"/"} className="textSeeAll cursorPointer">
+          <i className="fa-solid fa-chevron-left"></i> Go back
         </Link>
       </div>
       <CRow>
-        {newsArr?.slice(0, 6)?.map((item, index) => (
-          <>
-            {item.source != "impactwrestling.com" && (
-              <CCol md="4" sm="12" lg="4">
-                <TodayHeadlineCard item={item} index={index} />
-              </CCol>
-            )}
-          </>
-        ))}
-      </CRow>
-
-      <div className="d-flex justify-content-between my-2">
-        <h2>Featured News</h2>
-
-        <Link to={"/all_news"} className="textSeeAll cursorPointer">
-          See all <i className="fa-solid fa-chevron-right"></i>
-        </Link>
-      </div>
-      <CRow>
-        {newsArr?.slice(6, 12)?.map((item, index) => (
+        {newsArr?.map((item, index) => (
           <>
             {item.source != "impactwrestling.com" && (
               <CCol md="4" sm="12" lg="4">
@@ -123,4 +95,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AllNews;
