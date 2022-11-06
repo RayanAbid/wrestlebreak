@@ -12,10 +12,10 @@ const Logout = React.lazy(() => import("./views/dashboard/Dashboard"));
 const routes = [
   // { path: "/", exact: true, name: "Home", element: Dashboard },
   { path: "/home", exact: true, name: "Home", element: Home },
-  { path: "/explore", name: "Explore", element: Explore },
-  { path: "/saved", name: "Saved", element: Saved },
-  { path: "/subscriptions", name: "Subscriptions", element: Subscriptions },
-  { path: "/settings", name: "Settings", element: Settings },
+  { path: "/explore", name: "Explore", element: Home },
+  { path: "/saved", name: "Saved", element: Home },
+  { path: "/subscriptions", name: "Subscriptions", element: Home },
+  { path: "/settings", name: "Settings", element: Home },
   { path: "/logout", name: "Logout", element: Logout },
 ];
 

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   CButton,
   CCard,
@@ -15,10 +15,17 @@ import {
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import { cilEnvelopeClosed, cilLockLocked, cilUser } from "@coreui/icons";
+import { login } from "src/redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
   const email = useRef();
   const password = useRef();
+
+  const navigate = useNavigate();
 
   return (
     <div className="bg-black min-vh-100 d-flex flex-row align-items-center">
@@ -38,7 +45,6 @@ const Login = () => {
                       <CFormInput
                         onChange={(e) => {
                           email.current = e.target.value;
-                          // setEmail();
                         }}
                         value={email.current}
                         placeholder="Email"
@@ -68,7 +74,15 @@ const Login = () => {
                           }}
                           onClick={(e) => {
                             e.preventDefault();
-                            console.log(email, password.current);
+                            dispatch(
+                              login(
+                                {
+                                  email: email.current,
+                                  password: password.current,
+                                },
+                                navigate
+                              )
+                            );
                           }}
                           className="px-4"
                         >

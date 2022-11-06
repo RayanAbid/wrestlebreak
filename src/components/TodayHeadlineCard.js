@@ -38,6 +38,7 @@ function TodayHeadlineCard({ item, index }) {
               style={{
                 fontSize: "15px",
               }}
+              className="cursorPointer"
             >
               {title?.substring(0, 60)}
               {title?.length > 60 && "..."}

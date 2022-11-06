@@ -41,9 +41,9 @@ const AppHeader = () => {
             <CCol className="d-sm-none" xs={1}>
               <CHeaderToggler
                 className="ps-1"
-                onClick={() =>
-                  dispatch({ type: "set", sidebarShow: !sidebarShow })
-                }
+                onClick={() => {
+                  dispatch({ type: "set", sidebarShow: !sidebarShow });
+                }}
               >
                 <CIcon icon={cilMenu} size="lg" />
               </CHeaderToggler>
