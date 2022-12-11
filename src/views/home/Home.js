@@ -1,4 +1,4 @@
-import React, { useDebugValue, useEffect } from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 
 import {
   CAvatar,
@@ -61,16 +61,8 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const newsArr = useSelector((state) => state.newsArr);
+  const featuredNews = useSelector((state) => state.featuredNews);
   const dispatch = useDispatch();
-
-  const val = [
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-    { name: "he" },
-  ];
 
   const callGetAllNews = async () => {
     await dispatch(getAllNews());
@@ -109,11 +101,15 @@ const Home = () => {
         </Link>
       </div>
       <CRow>
-        {newsArr?.slice(6, 12)?.map((item, index) => (
+        {featuredNews?.map((item, index) => (
           <>
             {item.source != "impactwrestling.com" && (
               <CCol md="4" sm="12" lg="4">
-                <FeaturedNewsCard item={item} index={index} />
+                <FeaturedNewsCard
+                  isFromHomeFeatured={true}
+                  item={item}
+                  index={index}
+                />
               </CCol>
             )}
           </>

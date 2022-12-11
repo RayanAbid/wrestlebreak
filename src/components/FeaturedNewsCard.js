@@ -10,13 +10,38 @@ import {
 import moment from "moment";
 
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dislikeNews, likeNews } from "src/redux/actions";
 
-function FeaturedNewsCard({ item, index }) {
-  const { image, source, postLink, createdAt, title, description } = item;
+function FeaturedNewsCard({ item, index, isFromHomeFeatured }) {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  const {
+    image,
+    source,
+    postLink,
+    _id,
+    likes,
+    dislikes,
+    createdAt,
+    title,
+    description,
+  } = item;
 
   const navigateToPost = (e) => {
     e.preventDefault();
     window.open(postLink, "_blank");
+  };
+
+  const callLikeNews = async () => {
+    console.log("like called");
+    await dispatch(likeNews({ newsId: _id, index, isFromHomeFeatured }));
+  };
+
+  const callDislikeNews = async () => {
+    console.log("dislike called");
+    await dispatch(dislikeNews({ newsId: _id, index, isFromHomeFeatured }));
   };
 
   return (
@@ -40,17 +65,43 @@ function FeaturedNewsCard({ item, index }) {
           {title?.length > 60 && "..."}
         </CCardTitle>
         <div className="d-flex justify-content-start">
-          <p className="cardTextGray cursorPointer ">
-            <i className="fa-regular fa-thumbs-up"></i> <span>10.8k</span>
+          <p
+            onClick={() => {
+              callLikeNews();
+            }}
+            className="cardTextGray cursorPointer "
+          >
+            {likes?.includes(state?.user?.id) ? (
+              <i class="fa-solid text-light fa-thumbs-up"></i>
+            ) : (
+              <i className="fa-regular  fa-thumbs-up"></i>
+            )}
+
+            <span> {likes?.length ? likes?.length : 0}</span>
           </p>
-          <p className="cardTextGray cursorPointer ">
-            <i
-              className="fa-regular fa-thumbs-down "
-              style={{
-                marginLeft: 30,
-              }}
-            ></i>{" "}
-            <span>10.8k</span>
+          <p
+            onClick={() => {
+              callDislikeNews();
+            }}
+            className="cardTextGray cursorPointer "
+          >
+            {dislikes?.includes(state?.user?.id) ? (
+              <i
+                style={{
+                  marginLeft: 30,
+                }}
+                class="fa-solid text-light fa-thumbs-down"
+              ></i>
+            ) : (
+              <i
+                style={{
+                  marginLeft: 30,
+                }}
+                className="fa-regular  fa-thumbs-down"
+              ></i>
+            )}
+
+            <span> {dislikes?.length ? dislikes?.length : 0}</span>
           </p>
         </div>
         <div className="d-flex justify-content-between">

@@ -9,12 +9,37 @@ import {
 } from "@coreui/react";
 import moment from "moment";
 
+import { useDispatch, useSelector } from "react-redux";
+import { dislikeNews, likeNews } from "src/redux/actions";
+
 function TodayHeadlineCard({ item, index }) {
-  const { image, source, postLink, createdAt, title, description } = item;
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const {
+    image,
+    source,
+    postLink,
+    _id,
+    likes,
+    dislikes,
+    createdAt,
+    title,
+    description,
+  } = item;
 
   const navigateToPost = (e) => {
     e.preventDefault();
     window.open(postLink, "_blank");
+  };
+
+  const callLikeNews = async () => {
+    console.log("like called");
+    await dispatch(likeNews({ newsId: _id, index }));
+  };
+
+  const callDislikeNews = async () => {
+    console.log("dislike called");
+    await dispatch(dislikeNews({ newsId: _id, index }));
   };
 
   return (
@@ -46,14 +71,35 @@ function TodayHeadlineCard({ item, index }) {
             {/* <CCardText> */}
             <CRow>
               <CCol md="6" xs="6" sm="6" lg="6">
-                <p className="cardTextGray cursorPointer">
-                  <i className="fa-regular fa-thumbs-up"></i> <span>10.8k</span>
+                <p
+                  onClick={() => {
+                    callLikeNews();
+                  }}
+                  className="cardTextGray cursorPointer"
+                >
+                  {likes?.includes(state?.user?.id) ? (
+                    <i class="fa-solid text-light fa-thumbs-up"></i>
+                  ) : (
+                    <i className="fa-regular  fa-thumbs-up"></i>
+                  )}
+
+                  <span> {likes?.length ? likes?.length : 0}</span>
                 </p>
               </CCol>
               <CCol md="6" xs="6" sm="6" lg="6">
-                <p className="cardTextGray cursorPointer">
-                  <i className="fa-regular fa-thumbs-down"></i>{" "}
-                  <span>10.8k</span>
+                <p
+                  onClick={() => {
+                    callDislikeNews();
+                  }}
+                  className="cardTextGray cursorPointer"
+                >
+                  {dislikes?.includes(state?.user?.id) ? (
+                    <i class="fa-solid text-light fa-thumbs-down"></i>
+                  ) : (
+                    <i className="fa-regular  fa-thumbs-down"></i>
+                  )}
+
+                  <span> {dislikes?.length ? dislikes?.length : 0}</span>
                 </p>
               </CCol>
             </CRow>

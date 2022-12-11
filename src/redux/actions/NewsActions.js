@@ -15,7 +15,92 @@ export const getAllNews = (data) => async (dispatch, state) => {
         dispatch({
           type: "set",
           newsArr: response.data.news,
+          featuredNews: response.data.news.slice(6, 12),
         });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const likeNews = (vals) => async (dispatch, state) => {
+  var data = JSON.stringify({
+    userId: state().user?.id,
+  });
+
+  var config = {
+    method: "post",
+    url: `${URL}/news/like-post/${vals?.newsId}`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      if (response?.data?.success) {
+        if (vals?.isFromHomeFeatured) {
+          const newsArray = [...state().newsArr.slice(6, 12)]; //making a new array
+          newsArray[vals?.index] = response?.data?.data;
+
+          dispatch({
+            type: "set",
+            featuredNews: newsArray,
+          });
+        } else {
+          const newsArray = [...state().newsArr]; //making a new array
+          newsArray[vals?.index] = response?.data?.data;
+
+          dispatch({
+            type: "set",
+            newsArr: newsArray,
+          });
+        }
+      } else {
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const dislikeNews = (vals) => async (dispatch, state) => {
+  var data = JSON.stringify({
+    userId: state().user?.id,
+  });
+
+  var config = {
+    method: "post",
+    url: `${URL}/news/dislike-post/${vals?.newsId}`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      if (response?.data?.success) {
+        if (vals?.isFromHomeFeatured) {
+          const newsArray = [...state().newsArr.slice(6, 12)]; //making a new array
+          newsArray[vals?.index] = response?.data?.data;
+
+          dispatch({
+            type: "set",
+            featuredNews: newsArray,
+          });
+        } else {
+          const newsArray = [...state().newsArr]; //making a new array
+          newsArray[vals?.index] = response?.data?.data;
+
+          dispatch({
+            type: "set",
+            newsArr: newsArray,
+          });
+        }
+      } else {
       }
     })
     .catch(function (error) {
