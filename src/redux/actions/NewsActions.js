@@ -24,6 +24,32 @@ export const getAllNews = (data) => async (dispatch, state) => {
     });
 };
 
+export const getAllNewsSources = (data) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/news/get-all-sources`,
+    headers: {},
+  };
+
+  await axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.success) {
+        var arr = response.data.sources;
+        arr.unshift({
+          _id: "All",
+        });
+        dispatch({
+          type: "set",
+          newsSources: arr,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 export const likeNews = (vals) => async (dispatch, state) => {
   var data = JSON.stringify({
     userId: state().user?.id,

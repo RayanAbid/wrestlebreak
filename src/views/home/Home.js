@@ -55,25 +55,65 @@ import WidgetsBrand from "../widgets/WidgetsBrand";
 import WidgetsDropdown from "../widgets/WidgetsDropdown";
 import TodayHeadlineCard from "src/components/TodayHeadlineCard";
 import FeaturedNewsCard from "src/components/FeaturedNewsCard";
-import { firstAction, getAllNews } from "src/redux/actions/NewsActions";
+import {
+  firstAction,
+  getAllNews,
+  getAllNewsSources,
+} from "src/redux/actions/NewsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  const newsArr = useSelector((state) => state.newsArr);
-  const featuredNews = useSelector((state) => state.featuredNews);
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const [itemSelected, setItemSelected] = useState(0);
 
   const callGetAllNews = async () => {
     await dispatch(getAllNews());
   };
 
+  const callGetAllNewsSources = async () => {
+    await dispatch(getAllNewsSources());
+  };
+
   useEffect(() => {
     callGetAllNews();
+    callGetAllNewsSources();
   }, []);
 
   return (
     <>
+      <div class="scrollmenu">
+        {state?.newsSources?.map((item, index) => (
+          <>
+            {index == itemSelected ? (
+              <p
+                key={index}
+                onClick={() => {
+                  console.log("index in the selec", index);
+                  setItemSelected(index);
+                }}
+                className="cursorPointer selected"
+              >
+                {item?._id}
+              </p>
+            ) : (
+              <p
+                key={index}
+                onClick={() => {
+                  console.log(index);
+
+                  setItemSelected(index);
+                }}
+                className="cursorPointer"
+              >
+                {item?._id}
+              </p>
+            )}
+          </>
+        ))}
+      </div>
       <div className="d-flex justify-content-between my-2">
         <h2>Today’s Headlines</h2>
 
@@ -81,8 +121,9 @@ const Home = () => {
           See all <i className="fa-solid fa-chevron-right"></i>
         </Link>
       </div>
+
       <CRow>
-        {newsArr?.slice(0, 6)?.map((item, index) => (
+        {state?.newsArr?.slice(0, 6)?.map((item, index) => (
           <>
             {item.source != "impactwrestling.com" && (
               <CCol md="4" sm="12" lg="4">
@@ -101,7 +142,7 @@ const Home = () => {
         </Link>
       </div>
       <CRow>
-        {featuredNews?.map((item, index) => (
+        {state?.featuredNews?.map((item, index) => (
           <>
             {item.source != "impactwrestling.com" && (
               <CCol md="4" sm="12" lg="4">

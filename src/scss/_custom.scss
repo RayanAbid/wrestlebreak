@@ -135,3 +135,44 @@ html,
   color: $textSelected !important;
   text-decoration: none !important;
 }
+
+// category in home
+
+div.scrollmenu {
+  background-color: $bgMain;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu p {
+  display: inline-block;
+  color: $textSelected;
+  text-align: center;
+  border: 1px solid $textSelected;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+  margin-right: 10px;
+  border-radius: 50px;
+}
+
+div.scrollmenu p:hover {
+  color: $white;
+  background-color: $textSelected;
+}
+
+div.scrollmenu {
+  background-color: $bgMain;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu p.selected {
+  display: inline-block;
+  color: $white;
+  text-align: center;
+  background-color: $textSelected;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+  margin-right: 10px;
+  border-radius: 50px;
+}
