@@ -138,6 +138,10 @@ html,
 
 // category in home
 
+.scrollmenu::-webkit-scrollbar {
+  display: none;
+}
+
 div.scrollmenu {
   background-color: $bgMain;
   overflow: auto;
