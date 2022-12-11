@@ -74,7 +74,7 @@ const AllNews = () => {
   return (
     <>
       <div className="d-flex justify-content-between my-2">
-        <h2>All News</h2>
+        <h2>Explore</h2>
 
         <Link to={"/"} className="textSeeAll cursorPointer">
           <i className="fa-solid fa-chevron-left"></i> Go back
