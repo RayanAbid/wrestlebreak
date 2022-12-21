@@ -131,6 +131,14 @@ html,
   max-height: 230px !important;
 }
 
+.headlineCardImgFeaturedSkeleton {
+  border-radius: 25px !important;
+  width: 100% !important;
+  height: 150px !important;
+  object-fit: cover !important;
+  max-height: 230px !important;
+}
+
 .textSeeAll {
   color: $textSelected !important;
   text-decoration: none !important;

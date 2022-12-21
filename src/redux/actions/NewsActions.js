@@ -1,7 +1,7 @@
 import { URL } from "src/assets/utils/APIUtils";
 import axios from "axios";
 
-export const getAllNews = (data) => async (dispatch, state) => {
+export const getAllNews = (vals) => async (dispatch, state) => {
   var config = {
     method: "get",
     url: `${URL}/news/get-all-news`,
@@ -17,6 +17,7 @@ export const getAllNews = (data) => async (dispatch, state) => {
           newsArr: response.data.news,
           featuredNews: response.data.news.slice(6, 12),
         });
+        vals?.setLoading();
       }
     })
     .catch(function (error) {
