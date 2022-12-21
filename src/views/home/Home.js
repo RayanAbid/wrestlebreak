@@ -15,11 +15,11 @@ const Home = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   // add animation
-  const [headlinesParent, headlinesParentenableAnimations] = useAutoAnimate({
+  const [headlinesParent] = useAutoAnimate({
     duration: 250,
     easing: "ease-in-out",
   });
-  const [featuredParent, featuredParentenableAnimations] = useAutoAnimate({
+  const [featuredParent] = useAutoAnimate({
     duration: 250,
     easing: "ease-in-out",
 

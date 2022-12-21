@@ -13,7 +13,7 @@ const AllNews = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [parent, enableAnimations] = useAutoAnimate({
+  const [parent] = useAutoAnimate({
     duration: 250,
     easing: "ease-in-out",
   });
