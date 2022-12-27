@@ -15,6 +15,7 @@ export const getAllNews = (vals) => async (dispatch, state) => {
         dispatch({
           type: "set",
           newsArr: response.data.news,
+          exploreNewsArr: response.data.news,
           featuredNews: response.data.news.slice(6, 12),
         });
         vals?.setLoading();
@@ -22,6 +23,55 @@ export const getAllNews = (vals) => async (dispatch, state) => {
     })
     .catch(function (error) {
       console.log(error);
+    });
+};
+
+export const getAlExplorelNews = (vals) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/news/get-all-news`,
+    headers: {},
+  };
+
+  await axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.success) {
+        dispatch({
+          type: "set",
+          exploreNewsArr: response.data.news,
+        });
+        vals?.setLoading();
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const getSpecificNewsSource = (vals) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/news/get-specific-source-news/${vals?.source}`,
+    headers: {
+      Authorization: `Bearer ${state()?.accessToken}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("source", response.data);
+      if (response.data.success) {
+        dispatch({
+          type: "set",
+          exploreNewsArr: response.data.news,
+        });
+      }
+      vals?.setLoading();
+    })
+    .catch(function (error) {
+      console.log(error);
+      vals?.setLoading();
     });
 };
 

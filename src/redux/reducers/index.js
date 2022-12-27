@@ -9,6 +9,7 @@ const initialState = {
   featuredNews: [],
   user: [],
   accessToken: "",
+  exploreNewsArr: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {

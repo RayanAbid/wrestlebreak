@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import { CCol, CRow } from "@coreui/react";
 
 import FeaturedNewsCard from "src/components/FeaturedNewsCard";
-import { getAllNews, getAllNewsSources } from "src/redux/actions/NewsActions";
+import {
+  getAlExplorelNews,
+  getAllNews,
+  getAllNewsSources,
+  getSpecificNewsSource,
+} from "src/redux/actions/NewsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
@@ -13,12 +18,12 @@ const AllNews = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [parent] = useAutoAnimate({
+  const [parente] = useAutoAnimate({
     duration: 250,
     easing: "ease-in-out",
   });
   // states
-  const [itemSelected, setItemSelected] = useState(0);
+  const [itemSelected, setItemSelected] = useState("All");
   const [loading, setLoading] = useState(true);
 
   const callGetAllNews = async () => {
@@ -26,7 +31,7 @@ const AllNews = () => {
   };
 
   const callGetAllNewsSources = async () => {
-    await dispatch(getAllNewsSources());
+    await dispatch(getAlExplorelNews());
   };
 
   useEffect(() => {
@@ -34,12 +39,25 @@ const AllNews = () => {
     callGetAllNewsSources();
   }, []);
 
+  const callGetSpecificNewsSource = async (source) => {
+    if (source == "All") {
+      await callGetAllNews();
+    } else {
+      await dispatch(
+        getSpecificNewsSource({
+          source: source,
+          setLoading: () => setLoading(false),
+        })
+      );
+    }
+  };
+
   return (
     <>
       <div class="scrollmenu">
         {state?.newsSources?.map((item, index) => (
           <>
-            {index == itemSelected ? (
+            {item?._id == itemSelected ? (
               <p
                 key={index}
                 onClick={() => {
@@ -54,9 +72,10 @@ const AllNews = () => {
               <p
                 key={index}
                 onClick={() => {
-                  console.log(index);
+                  console.log(item?._id);
                   setLoading(true);
-                  setItemSelected(index);
+                  callGetSpecificNewsSource(item?._id);
+                  setItemSelected(item?._id);
                 }}
                 className="cursorPointer"
               >
@@ -78,7 +97,7 @@ const AllNews = () => {
           <LoaderComponent />
         ) : (
           <>
-            {state?.newsArr?.map((item, index) => (
+            {state?.exploreNewsArr?.map((item, index) => (
               <>
                 {item.source != "impactwrestling.com" && (
                   <CCol md="4" sm="12" lg="4">
