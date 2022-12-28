@@ -20,6 +20,12 @@ $textGray: #878787;
   width: 43px;
 }
 
+.badgeAd {
+  background: $textSelected;
+  color: white;
+  padding: 1px 10px;
+}
+
 .simplebar-content > .nav-item,
 .simplebar-content > .nav-item > a {
   background: $sidebarBg !important;

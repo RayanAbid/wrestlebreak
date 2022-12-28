@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import LoaderComponent from "src/components/LoaderComponent";
+import AdComponent from "src/components/AdComponent";
 
 const AllNews = () => {
   const state = useSelector((state) => state);
@@ -52,6 +53,9 @@ const AllNews = () => {
     }
   };
 
+  var randNum = Math.floor(Math.random() * 10) + 1;
+  console.log("randNum,", randNum);
+
   return (
     <>
       <div class="scrollmenu">
@@ -85,6 +89,7 @@ const AllNews = () => {
           </>
         ))}
       </div>
+
       <div className="d-flex justify-content-between my-2">
         <h2>Explore</h2>
 
@@ -99,10 +104,25 @@ const AllNews = () => {
           <>
             {state?.exploreNewsArr?.map((item, index) => (
               <>
-                {item.source != "impactwrestling.com" && (
-                  <CCol md="4" sm="12" lg="4">
-                    <FeaturedNewsCard item={item} index={index} />
-                  </CCol>
+                {index % 10 == 0 ? (
+                  <>
+                    <CCol md="4" sm="12" lg="4">
+                      <AdComponent />
+                    </CCol>
+                    {item.source != "impactwrestling.com" && (
+                      <CCol md="4" sm="12" lg="4">
+                        <FeaturedNewsCard item={item} index={index} />
+                      </CCol>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {item.source != "impactwrestling.com" && (
+                      <CCol md="4" sm="12" lg="4">
+                        <FeaturedNewsCard item={item} index={index} />
+                      </CCol>
+                    )}
+                  </>
                 )}
               </>
             ))}

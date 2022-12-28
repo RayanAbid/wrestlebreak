@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import LoaderComponent from "src/components/LoaderComponent";
+import AdComponent from "src/components/AdComponent";
 
 const Home = () => {
   const state = useSelector((state) => state);
@@ -51,12 +52,27 @@ const Home = () => {
           <LoaderComponent />
         ) : (
           <>
-            {state?.newsArr?.slice(0, 6)?.map((item, index) => (
+            {state?.newsArr?.slice(0, 8)?.map((item, index) => (
               <>
-                {item.source != "impactwrestling.com" && (
-                  <CCol md="4" sm="12" lg="4">
-                    <TodayHeadlineCard item={item} index={index} />
-                  </CCol>
+                {index % 10 == 0 ? (
+                  <>
+                    <CCol md="4" sm="12" lg="4">
+                      <AdComponent />
+                    </CCol>
+                    {item.source != "impactwrestling.com" && (
+                      <CCol md="4" sm="12" lg="4">
+                        <TodayHeadlineCard item={item} index={index} />
+                      </CCol>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {item.source != "impactwrestling.com" && (
+                      <CCol md="4" sm="12" lg="4">
+                        <TodayHeadlineCard item={item} index={index} />
+                      </CCol>
+                    )}
+                  </>
                 )}
               </>
             ))}
@@ -78,14 +94,33 @@ const Home = () => {
           <>
             {state?.featuredNews?.map((item, index) => (
               <>
-                {item.source != "impactwrestling.com" && (
-                  <CCol md="4" sm="12" lg="4">
-                    <FeaturedNewsCard
-                      isFromHomeFeatured={true}
-                      item={item}
-                      index={index}
-                    />
-                  </CCol>
+                {index % 10 == 0 ? (
+                  <>
+                    <CCol md="4" sm="12" lg="4">
+                      <AdComponent />
+                    </CCol>
+                    {item.source != "impactwrestling.com" && (
+                      <CCol md="4" sm="12" lg="4">
+                        <FeaturedNewsCard
+                          isFromHomeFeatured={true}
+                          item={item}
+                          index={index}
+                        />
+                      </CCol>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {item.source != "impactwrestling.com" && (
+                      <CCol md="4" sm="12" lg="4">
+                        <FeaturedNewsCard
+                          isFromHomeFeatured={true}
+                          item={item}
+                          index={index}
+                        />
+                      </CCol>
+                    )}
+                  </>
                 )}
               </>
             ))}

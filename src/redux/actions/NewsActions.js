@@ -16,7 +16,7 @@ export const getAllNews = (vals) => async (dispatch, state) => {
           type: "set",
           newsArr: response.data.news,
           exploreNewsArr: response.data.news,
-          featuredNews: response.data.news.slice(6, 12),
+          featuredNews: response.data.news.slice(9, 17),
         });
         vals?.setLoading();
       }
