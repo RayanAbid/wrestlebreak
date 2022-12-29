@@ -17,7 +17,7 @@ import { AppHeaderDropdown } from "./header/index";
 
 import { FilterIcon } from "src/assets/icons";
 import CIcon from "@coreui/icons-react";
-import { cilMenu } from "@coreui/icons";
+import { cilHamburgerMenu } from "@coreui/icons";
 
 const AppHeader = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const AppHeader = () => {
           className="ps-1 d-none d-sm-block"
           onClick={() => dispatch({ type: "set", sidebarShow: !sidebarShow })}
         >
-          <CIcon icon={cilMenu} size="lg" />
+          <CIcon icon={cilHamburgerMenu} size="lg" />
         </CHeaderToggler>
         <CHeaderNav className="d-none d-md-flex me-auto"></CHeaderNav>
         {/* Empty div */}
@@ -45,10 +45,10 @@ const AppHeader = () => {
                   dispatch({ type: "set", sidebarShow: !sidebarShow });
                 }}
               >
-                <CIcon icon={cilMenu} size="lg" />
+                <CIcon icon={cilHamburgerMenu} size="lg" />
               </CHeaderToggler>
             </CCol>
-            <CCol xs={7} md={8}>
+            {/* <CCol xs={7} md={8}>
               <CInputGroup className="">
                 <CInputGroupText
                   style={{ background: "white", border: 0 }}
@@ -65,9 +65,9 @@ const AppHeader = () => {
                 className="d-inline-block headerFilterIcon"
                 alt="filterIcon"
               />
-              {/* <i className="fa fa-filter headerFilterIcon" aria-hidden="true"></i> */}
-            </CCol>
-            <CCol xs={1}>
+              //   <i className="fa fa-filter headerFilterIcon" aria-hidden="true"></i> 
+            </CCol> */}
+            <CCol xs={6}>
               <CHeaderNav className="ms-3">
                 <AppHeaderDropdown />
               </CHeaderNav>

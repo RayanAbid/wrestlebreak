@@ -64,46 +64,49 @@ function FeaturedNewsCard({ item, index, isFromHomeFeatured }) {
           {title?.substring(0, 60)}
           {title?.length > 60 && "..."}
         </CCardTitle>
-        <div className="d-flex justify-content-start">
-          <p
-            onClick={() => {
-              callLikeNews();
-            }}
-            className="cardTextGray cursorPointer "
-          >
-            {likes?.includes(state?.user?.id) ? (
-              <i class="fa-solid text-light fa-thumbs-up"></i>
-            ) : (
-              <i className="fa-regular  fa-thumbs-up"></i>
-            )}
+        {state?.accessToken && (
+          <div className="d-flex justify-content-start">
+            <p
+              onClick={() => {
+                callLikeNews();
+              }}
+              className="cardTextGray cursorPointer "
+            >
+              {likes?.includes(state?.user?.id) ? (
+                <i class="fa-solid text-light fa-thumbs-up"></i>
+              ) : (
+                <i className="fa-regular  fa-thumbs-up"></i>
+              )}
 
-            <span> {likes?.length ? likes?.length : 0}</span>
-          </p>
-          <p
-            onClick={() => {
-              callDislikeNews();
-            }}
-            className="cardTextGray cursorPointer "
-          >
-            {dislikes?.includes(state?.user?.id) ? (
-              <i
-                style={{
-                  marginLeft: 30,
-                }}
-                class="fa-solid text-light fa-thumbs-down"
-              ></i>
-            ) : (
-              <i
-                style={{
-                  marginLeft: 30,
-                }}
-                className="fa-regular  fa-thumbs-down"
-              ></i>
-            )}
+              <span> {likes?.length ? likes?.length : 0}</span>
+            </p>
+            <p
+              onClick={() => {
+                callDislikeNews();
+              }}
+              className="cardTextGray cursorPointer "
+            >
+              {dislikes?.includes(state?.user?.id) ? (
+                <i
+                  style={{
+                    marginLeft: 30,
+                  }}
+                  class="fa-solid text-light fa-thumbs-down"
+                ></i>
+              ) : (
+                <i
+                  style={{
+                    marginLeft: 30,
+                  }}
+                  className="fa-regular  fa-thumbs-down"
+                ></i>
+              )}
 
-            <span> {dislikes?.length ? dislikes?.length : 0}</span>
-          </p>
-        </div>
+              <span> {dislikes?.length ? dislikes?.length : 0}</span>
+            </p>
+          </div>
+        )}
+
         <div className="d-flex justify-content-between">
           <p className="">
             <span className="srcTag">{source}</span>

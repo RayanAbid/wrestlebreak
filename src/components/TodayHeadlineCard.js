@@ -69,40 +69,42 @@ function TodayHeadlineCard({ item, index }) {
               {title?.length > 60 && "..."}
             </CCardTitle>
             {/* <CCardText> */}
-            <CRow>
-              <CCol md="6" xs="6" sm="6" lg="6">
-                <p
-                  onClick={() => {
-                    callLikeNews();
-                  }}
-                  className="cardTextGray cursorPointer"
-                >
-                  {likes?.includes(state?.user?.id) ? (
-                    <i class="fa-solid text-light fa-thumbs-up"></i>
-                  ) : (
-                    <i className="fa-regular  fa-thumbs-up"></i>
-                  )}
+            {state?.accessToken && (
+              <CRow>
+                <CCol md="6" xs="6" sm="6" lg="6">
+                  <p
+                    onClick={() => {
+                      callLikeNews();
+                    }}
+                    className="cardTextGray cursorPointer"
+                  >
+                    {likes?.includes(state?.user?.id) ? (
+                      <i class="fa-solid text-light fa-thumbs-up"></i>
+                    ) : (
+                      <i className="fa-regular  fa-thumbs-up"></i>
+                    )}
 
-                  <span> {likes?.length ? likes?.length : 0}</span>
-                </p>
-              </CCol>
-              <CCol md="6" xs="6" sm="6" lg="6">
-                <p
-                  onClick={() => {
-                    callDislikeNews();
-                  }}
-                  className="cardTextGray cursorPointer"
-                >
-                  {dislikes?.includes(state?.user?.id) ? (
-                    <i class="fa-solid text-light fa-thumbs-down"></i>
-                  ) : (
-                    <i className="fa-regular  fa-thumbs-down"></i>
-                  )}
+                    <span> {likes?.length ? likes?.length : 0}</span>
+                  </p>
+                </CCol>
+                <CCol md="6" xs="6" sm="6" lg="6">
+                  <p
+                    onClick={() => {
+                      callDislikeNews();
+                    }}
+                    className="cardTextGray cursorPointer"
+                  >
+                    {dislikes?.includes(state?.user?.id) ? (
+                      <i class="fa-solid text-light fa-thumbs-down"></i>
+                    ) : (
+                      <i className="fa-regular  fa-thumbs-down"></i>
+                    )}
 
-                  <span> {dislikes?.length ? dislikes?.length : 0}</span>
-                </p>
-              </CCol>
-            </CRow>
+                    <span> {dislikes?.length ? dislikes?.length : 0}</span>
+                  </p>
+                </CCol>
+              </CRow>
+            )}
             <CRow>
               <p className="">
                 <span className="srcTag">{source}</span>

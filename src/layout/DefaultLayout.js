@@ -14,13 +14,13 @@ const DefaultLayout = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  useEffect(() => {
-    if (state?.accessToken) {
-      navigate("/");
-    } else {
-      navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (state?.accessToken) {
+  //     navigate("/");
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   return (
     <div>
