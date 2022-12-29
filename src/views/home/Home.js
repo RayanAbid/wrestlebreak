@@ -12,6 +12,8 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import LoaderComponent from "src/components/LoaderComponent";
 import AdComponent from "src/components/AdComponent";
 
+import ReactGA from "react-ga";
+
 const Home = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -34,6 +36,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
     callGetAllNews();
   }, []);
 

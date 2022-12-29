@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import LoaderComponent from "src/components/LoaderComponent";
 import AdComponent from "src/components/AdComponent";
+import ReactGA from "react-ga";
 
 const AllNews = () => {
   const state = useSelector((state) => state);
@@ -36,6 +37,7 @@ const AllNews = () => {
   };
 
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
     callGetAllNews();
     callGetAllNewsSources();
   }, []);

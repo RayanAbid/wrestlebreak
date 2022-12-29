@@ -5,6 +5,10 @@ import "./scss/style.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import ReactGA from "react-ga";
+
+ReactGA.initialize("UA-188370842-1");
+
 const loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>

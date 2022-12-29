@@ -4,9 +4,9 @@
   "version": "1.0.1",
   "description": "Replace new tab screen with daily wrestling news",
   "icons": {
-    "16": "16.ico",
-    "48": "48.ico",
-    "128": "128.ico"
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
