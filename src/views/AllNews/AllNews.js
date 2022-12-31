@@ -106,7 +106,7 @@ const AllNews = () => {
           <>
             {state?.exploreNewsArr?.map((item, index) => (
               <>
-                {index % 10 == 0 ? (
+                {/* {index % 10 == 0 ? (
                   <>
                     <CCol md="4" sm="12" lg="4">
                       <AdComponent />
@@ -117,15 +117,15 @@ const AllNews = () => {
                       </CCol>
                     )}
                   </>
-                ) : (
-                  <>
-                    {item.source != "impactwrestling.com" && (
-                      <CCol md="4" sm="12" lg="4">
-                        <FeaturedNewsCard item={item} index={index} />
-                      </CCol>
-                    )}
-                  </>
-                )}
+                ) : ( */}
+                <>
+                  {item.source != "impactwrestling.com" && (
+                    <CCol md="4" sm="12" lg="4">
+                      <FeaturedNewsCard item={item} index={index} />
+                    </CCol>
+                  )}
+                </>
+                {/* )} */}
               </>
             ))}
           </>

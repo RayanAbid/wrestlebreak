@@ -55,9 +55,9 @@ const Home = () => {
           <LoaderComponent />
         ) : (
           <>
-            {state?.newsArr?.slice(0, 8)?.map((item, index) => (
+            {state?.newsArr?.slice(0, 6)?.map((item, index) => (
               <>
-                {index % 10 == 0 ? (
+                {/* {index % 10 == 0 ? (
                   <>
                     <CCol md="4" sm="12" lg="4">
                       <AdComponent />
@@ -68,15 +68,15 @@ const Home = () => {
                       </CCol>
                     )}
                   </>
-                ) : (
-                  <>
-                    {item.source != "impactwrestling.com" && (
-                      <CCol md="4" sm="12" lg="4">
-                        <TodayHeadlineCard item={item} index={index} />
-                      </CCol>
-                    )}
-                  </>
-                )}
+                ) : ( */}
+                <>
+                  {item.source != "impactwrestling.com" && (
+                    <CCol md="4" sm="12" lg="4">
+                      <TodayHeadlineCard item={item} index={index} />
+                    </CCol>
+                  )}
+                </>
+                {/* )} */}
               </>
             ))}
           </>
@@ -97,7 +97,7 @@ const Home = () => {
           <>
             {state?.featuredNews?.map((item, index) => (
               <>
-                {index % 10 == 0 ? (
+                {/* {index % 10 == 0 ? (
                   <>
                     <CCol md="4" sm="12" lg="4">
                       <AdComponent />
@@ -112,19 +112,19 @@ const Home = () => {
                       </CCol>
                     )}
                   </>
-                ) : (
-                  <>
-                    {item.source != "impactwrestling.com" && (
-                      <CCol md="4" sm="12" lg="4">
-                        <FeaturedNewsCard
-                          isFromHomeFeatured={true}
-                          item={item}
-                          index={index}
-                        />
-                      </CCol>
-                    )}
-                  </>
-                )}
+                ) : ( */}
+                <>
+                  {item.source != "impactwrestling.com" && (
+                    <CCol md="4" sm="12" lg="4">
+                      <FeaturedNewsCard
+                        isFromHomeFeatured={true}
+                        item={item}
+                        index={index}
+                      />
+                    </CCol>
+                  )}
+                </>
+                {/* )} */}
               </>
             ))}
           </>
