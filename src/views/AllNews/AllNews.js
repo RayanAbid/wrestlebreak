@@ -55,8 +55,8 @@ const AllNews = () => {
     }
   };
 
-  var randNum = Math.floor(Math.random() * 10) + 1;
-  console.log("randNum,", randNum);
+  // var randNum = Math.floor(Math.random() * 10) + 1;
+  // console.log("randNum,", randNum);
 
   return (
     <>
