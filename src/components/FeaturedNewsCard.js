@@ -36,11 +36,44 @@ function FeaturedNewsCard({ item, index, isFromHomeFeatured }) {
 
   const callLikeNews = async () => {
     console.log("like called");
+
+    const arr = likes;
+    const arrLikes = dislikes;
+
+    const newId = state?.user?.id; //new id
+
+    if (!arr?.includes(newId)) {
+      console.log("add now");
+
+      arr?.push(newId); //adding to array because value doesnt exists
+      arrLikes?.splice(arrLikes.indexOf(newId), 1);
+    } else {
+      console.log("rem now");
+
+      arr?.splice(arr.indexOf(newId), 1); //deleting
+    }
+
     await dispatch(likeNews({ newsId: _id, index, isFromHomeFeatured }));
   };
 
   const callDislikeNews = async () => {
     console.log("dislike called");
+    const arr = dislikes;
+    const arrLikes = likes;
+    const newId = state?.user?.id; //new id
+
+    if (!arr?.includes(newId)) {
+      console.log("add now");
+
+      arr?.push(newId); //adding to array because value doesnt exists
+
+      arrLikes?.splice(arrLikes.indexOf(newId), 1);
+    } else {
+      console.log("rem now");
+
+      arr?.splice(arr.indexOf(newId), 1); //deleting
+    }
+
     await dispatch(dislikeNews({ newsId: _id, index, isFromHomeFeatured }));
   };
 
